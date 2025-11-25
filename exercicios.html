@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>23 Exercícios HTML + JavaScript</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; color: #333; }
+    .exercicio { 
+      background: white; padding: 20px; margin: 20px 0; border-radius: 10px; 
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+    }
+    h1 { text-align: center; color: #2c3e50; }
+    h3 { color: #2980b9; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+    input, button, select { padding: 10px; margin: 5px; font-size: 16px; }
+    button { background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #2980b9; }
+    button:disabled { background: #95a5a6; cursor: not-allowed; }
+    .resultado { margin-top: 10px; font-weight: bold; color: #2c3e50; }
+    .correto { color: green; }
+    .errado { color: red; }
+  </style>
+</head>
+<body>
+
+  <h1>23 Exercícios de HTML + JavaScript</h1>
+
+  <!-- Exercício 1 -->
+  <div class="exercicio">
+    <h3>1. Par ou Ímpar?</h3>
+    <input type="number" id="num1" placeholder="Digite um número">
+    <button onclick="verificarParImpar()">Verificar</button>
+    <p class="resultado" id="res1"></p>
+  </div>
+
+  <!-- Exercício 2 -->
+  <div class="exercicio">
+    <h3>2. Tabuada</h3>
+    <input type="number" id="numTabuada" placeholder="Número">
+    <button onclick="mostrarTabuada()">Gerar Tabuada</button>
+    <p class="resultado" id="resTabuada"></p>
+  </div>
+
+  <!-- Exercício 3 -->
+  <div class="exercicio">
+    <h3>3. Contador</h3>
+    <button onclick="diminuir()">-</button>
+    <span style="font-size: 24px; margin: 0 20px;" id="contador">0</span>
+    <button onclick="aumentar()">+</button>
+  </div>
+
+  <!-- Exercício 4 -->
+  <div class="exercicio">
+    <h3>4. Adivinhe o Número (1 a 10)</h3>
+    <input type="number" id="tentativa" min="1" max="10">
+    <button onclick="adivinhar()">Tentar</button>
+    <p class="resultado" id="resAdivinhar"></p>
+  </div>
+
+  <!-- Exercício 5 -->
+  <div class="exercicio">
+    <h3>5. Média de 3 notas</h3>
+    <input type="number" id="n1" placeholder="Nota 1" step="0.1">
+    <input type="number" id="n2" placeholder="Nota 2" step="0.1">
+    <input type="number" id="n3" placeholder="Nota 3" step="0.1">
+    <button onclick="calcularMedia()">Calcular</button>
+    <p class="resultado" id="resMedia"></p>
+  </div>
+
+  <!-- Exercício 6 -->
+  <div class="exercicio">
+    <h3>6. Perfil Pessoal</h3>
+    <section style="text-align:center;">
+      <h1>Olavo Leite Monteiro</h1>
+      <img src="C:\Users\olavo\OneDrive\403199114-256-k180424.jpg" alt="Foto de perfil">
+      <p>Estudante de T.I | Apaixonado por tecnologia</p>
+      <h4>Hobbies:</h4>
+      <ul>
+        <li>Ler livros de ficção científica</li>
+        <li>Programar projetos pessoais</li>
+        <li>Fazer jogos, sites</li>
+        <li>Jogar videogame</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- Exercício 7 e 8 -->
+  <div class="exercicio">
+    <h3>7-8. Formulário de Contato com Validação</h3>
+    <form id="formContato">
+      <input type="text" id="nome" placeholder="Nome completo" required><br>
+      <input type="email" id="email" placeholder="E-mail" required><br>
+      <input type="text" id="assunto" placeholder="Assunto" required><br>
+      <textarea id="mensagem" placeholder="Sua mensagem" required></textarea><br>
+      <button type="submit">Enviar</button>
+    </form>
+    <p class="resultado" id="resForm"></p>
+  </div>
+
+  <!-- Exercício 9 -->
+  <div class="exercicio">
+    <h3>9. Mudar Cor de Fundo</h3>
+    <button onclick="mudarCorFundo()">Mudar Cor</button>
+  </div>
+
+  <!-- Exercício 10 -->
+  <div class="exercicio">
+    <h3>10. Calculadora de IMC</h3>
+    <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
+    <input type="number" id="altura" placeholder="Altura (m)" step="0.01">
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <p class="resultado" id="resIMC"></p>
+  </div>
+
+  <!-- Exercício 11 -->
+  <div class="exercicio">
+    <h3>11. Calculadora Básica</h3>
+    <input type="number" id="numA">
+    <input type="number" id="numB">
+    <button onclick="somar()">+</button>
+    <button onclick="subtrair()">−</button>
+    <button onclick="multiplicar()">×</button>
+    <button onclick="dividir()">÷</button>
+    <p class="resultado" id="resCalc"></p>
+  </div>
+
+  <!-- Exercício 12 -->
+  <div class="exercicio">
+    <h3>12. Quiz Simples</h3>
+    <p>Qual é a capital do Brasil?</p>
+    <input type="radio" name="capital" value="Rio"> Rio de Janeiro<br>
+    <input type="radio" name="capital" value="São Paulo"> São Paulo<br>
+    <input type="radio" name="capital" value="Brasília" id="certa"> Brasília<br>
+    <input type="radio" name="capital" value="Salvador"> Salvador<br>
+    <button onclick="verificarQuiz()">Responder</button>
+    <p class="resultado" id="resQuiz"></p>
+  </div>
+
+  <!-- Exercício 13 -->
+  <div class="exercicio">
+    <h3>13. Conversor de Temperatura</h3>
+    <input type="number" id="temp" placeholder="Temperatura">
+    <button onclick="celsiusToF()">°C → °F</button>
+    <button onclick="fToCelsius()">°F → °C</button>
+    <p class="resultado" id="resTemp"></p>
+  </div>
+
+  <!-- Exercício 14 -->
+  <div class="exercicio">
+    <h3>14. Saudação Personalizada</h3>
+    <input type="text" id="nomeUsuario" placeholder="Seu nome">
+    <button onclick="saudacao()">Cumprimentar</button>
+  </div>
+
+  <!-- Exercício 15 -->
+  <div class="exercicio">
+    <h3>15. Cronômetro</h3>
+    <h2 id="cronometro">00:00:00</h2>
+    <button onclick="iniciarCron()">Iniciar</button>
+    <button onclick="pausarCron()">Pausar</button>
+    <button onclick="zerarCron()">Zerar</button>
+  </div>
+
+  <!-- Exercício 16 -->
+  <div class="exercicio">
+    <h3>16. Mudar Cor com Rádio</h3>
+    <input type="radio" name="cor" value="#000" onclick="mudarCor(this.value)"> Preto<br>
+    <input type="radio" name="cor" value="#e74c3c" onclick="mudarCor(this.value)"> Vermelho<br>
+    <input type="radio" name="cor" value="#fff" onclick="mudarCor(this.value)"> Branco<br>
+    <input type="radio" name="cor" value="#f1c40f" onclick="mudarCor(this.value)"> Amarelo<br>
+  </div>
+
+  <!-- Exercício 18 -->
+  <div class="exercicio">
+    <h3>18. Botão com Cor Aleatória</h3>
+    <button id="btnCor" style="padding:15px 30px;">Clique em mim!</button>
+  </div>
+
+<!-- Exercício 19: Contador de Cliques -->
+<div class="exercicio">
+  <h3>19. Contador de Cliques</h3>
+  <button id="btnContador19">Clique aqui</button>
+  <p>Cliques: <span id="contador19">0</span></p>
+</div>
+
+<script>
+  // Variável para contar os cliques
+  let cliques19 = 0;
+
+  // Selecionar o botão e o span
+  const botao19 = document.getElementById("btnContador19");
+  const span19 = document.getElementById("contador19");
+
+  // Adicionar o evento de clique
+  botao19.addEventListener("click", function() {
+    cliques19++;                 // Incrementa a cada clique
+    span19.textContent = cliques19;  // Atualiza o número na tela
+  });
+</script>
+
+  <!-- Exercício 20 -->
+  <div class="exercicio">
+    <h3>20. Hover no Texto</h3>
+    <p id="textoHover" style="font-size:20px; cursor:pointer;">
+      Passe o mouse aqui!
+    </p>
+  </div>
+
+<!-- Exercício 21: Mostrar última tecla pressionada -->
+<div class="exercicio">
+  <h3>21. Última tecla pressionada</h3>
+  <label>Digite qualquer coisa aqui:</label><br><br>
+  <input type="text" id="inputTecla" placeholder="Digite e veja a tecla..." autofocus>
+  <p>Última tecla pressionada: <strong><span id="teclaPressionada">nenhuma ainda</span></strong></p>
+</div>
+
+<script>
+  // Selecionar os elementos
+  const input = document.getElementById("inputTecla");
+  const resultado = document.getElementById("teclaPressionada");
+
+  // Usar keydown (funciona mesmo sem soltar a tecla)
+  input.addEventListener("keydown", function(e) {
+    // e.key mostra exatamente o que foi digitado (inclui Enter, Space, etc.)
+    resultado.textContent = e.key;
+  });
+
+  // Opcional: se quiser que mostre também teclas especiais como "Enter", "Backspace", etc.
+  // Está tudo funcionando com e.key
+</script>
+
+<!-- Exercício 22: Duplo clique para esconder o parágrafo -->
+<div class="exercicio">
+  <h3>22. Duplo clique para esconder</h3>
+  <p id="paragrafo22" style="background:#ffeb3b; padding:20px; font-size:18px; text-align:center; cursor:pointer; border-radius:10px;">
+    Dê dois cliques rápidos aqui e eu desapareço!
+  </p>
+</div>
+
+<script>
+  // Selecionar o parágrafo com ID único
+  const paragrafo = document.getElementById("paragrafo22");
+
+  // Adicionar evento de duplo clique
+  paragrafo.addEventListener("dblclick", function() {
+    this.style.display = "none";
+  });
+</script>
+
+  <!-- Exercício 23 -->
+  <div class="exercicio">
+    <h3>23. Botão Habilitado com Checkbox</h3>
+    <input type="checkbox" id="checkPermissao">
+    <label for="checkPermissao">Aceito os termos</label><br><br>
+    <button id="btnEnviar" disabled>Enviar Formulário</button>
+  </div>
+
+  <script>
+    // Variáveis globais
+    let numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    let cliques = 0;
+    let cronometroInterval;
+    let tempo = 0;
+
+    // 1
+    function verificarParImpar() {
+      const num = parseInt(document.getElementById("num1").value);
+      document.getElementById("res1").innerText = 
+        isNaN(num) ? "Digite um número válido" : 
+        (num % 2 === 0 ? "PAR" : "ÍMPAR");
+    }
+
+    // 2
+    function mostrarTabuada() {
+      const num = parseInt(document.getElementById("numTabuada").value);
+      if (isNaN(num)) return alert("Digite um número");
+      let tab = "";
+      for(let i = 1; i <= 10; i++) tab += `${num} x ${i} = ${num*i}<br>`;
+      document.getElementById("resTabuada").innerHTML = tab;
+    }
+
+    // 3
+    let contador = 0;
+    function aumentar() { contador++; document.getElementById("contador").innerText = contador; }
+    function diminuir() { contador--; document.getElementById("contador").innerText = contador; }
+
+    // 4
+    function adivinhar() {
+      const palpite = parseInt(document.getElementById("tentativa").value);
+      if (palpite === numeroSecreto) {
+        document.getElementById("resAdivinhar").innerHTML = `<span class="correto">Acertou!</span>`;
+        numeroSecreto = Math.floor(Math.random() * 10) + 1;
+      } else {
+        document.getElementById("resAdivinhar").innerHTML = 
+          `<span class="errado">${palpite > numeroSecreto ? "Menor" : "Maior"}</span>`;
+      }
+    }
+
+    // 5
+    function calcularMedia() {
+      const n1 = parseFloat(document.getElementById("n1").value);
+      const n2 = parseFloat(document.getElementById("n2").value);
+      const n3 = parseFloat(document.getElementById("n3").value);
+      if (isNaN(n1) || isNaN(n2) || isNaN(n3)) return alert("Preencha todas as notas");
+      const media = (n1 + n2 + n3) / 3;
+      const status = media >= 7 ? "Aprovado" : "Reprovado";
+      document.getElementById("resMedia").innerHTML = `Média: ${media.toFixed(2)} - ${status}`;
+    }
+
+    // 8 - Validação formulário
+    document.getElementById("formContato").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      if (nome && email) {
+        document.getElementById("resForm").innerHTML = `<span class="correto">Mensagem enviada com sucesso!</span>`;
+      } else {
+        document.getElementById("resForm").innerHTML = `<span class="errado">Preencha todos os campos!</span>`;
+      }
+    });
+
+    // 9
+    function mudarCorFundo() {
+      const cores = ["#3498db", "#e74c3c", "#2ecc71", "#f1c40f", "#9b59b6"];
+      document.body.style.background = cores[Math.floor(Math.random() * cores.length)];
+    }
+
+    // 10
+    function calcularIMC() {
+      const peso = parseFloat(document.getElementById("peso").value);
+      const altura = parseFloat(document.getElementById("altura").value);
+      if (!peso || !altura) return alert("Preencha peso e altura");
+      const imc = peso / (altura ** 2);
+      document.getElementById("resIMC").innerText = `IMC: ${imc.toFixed(2)}`;
+    }
+
+    // 11
+    function somar() { calc((a,b) => a+b); }
+    function subtrair() { calc((a,b) => a-b); }
+    function multiplicar() { calc((a,b) => a*b); }
+    function dividir() { calc((a,b) => b!==0 ? a/b : "Erro"); }
+    function calc(op) {
+      const a = parseFloat(document.getElementById("numA").value);
+      const b = parseFloat(document.getElementById("numB").value);
+      if (isNaN(a) || isNaN(b)) return;
+      document.getElementById("resCalc").innerText = "Resultado: " + op(a,b).toFixed(2);
+    }
+
+    // 12
+    function verificarQuiz() {
+      document.getElementById("resQuiz").innerHTML = 
+        document.getElementById("certa").checked ? 
+        '<span class="correto">Correto!</span>' : 
+        '<span class="errado">Errado! É Brasília.</span>';
+    }
+
+    // 13
+    function celsiusToF() {
+      const c = parseFloat(document.getElementById("temp").value);
+      if (!isNaN(c)) document.getElementById("resTemp").innerText = `${c}°C = ${(c*9/5+32).toFixed(2)}°F`;
+    }
+    function fToCelsius() {
+      const f = parseFloat(document.getElementById("temp").value);
+      if (!isNaN(f)) document.getElementById("resTemp").innerText = `${f}°F = ${((f-32)*5/9).toFixed(2)}°C`;
+    }
+
+    // 14
+    function saudacao() {
+      const nome = document.getElementById("nomeUsuario").value.trim();
+      if (nome) alert(`Olá ${nome}! Seja bem-vindo(a)!`);
+    }
+
+    // 15 - Cronômetro
+    function formatarTempo(seg) {
+      const h = Math.floor(seg / 3600).toString().padStart(2,'0');
+      const m = Math.floor((seg % 3600)/60).toString().padStart(2,'0');
+      const s = (seg % 60).toString().padStart(2,'0');
+      return `${h}:${m}:${s}`;
+    }
+    function iniciarCron() {
+      if (!cronometroInterval) cronometroInterval = setInterval(() => {
+        tempo++;
+        document.getElementById("cronometro").innerText = formatarTempo(tempo);
+      }, 1000);
+    }
+    function pausarCron() { clearInterval(cronometroInterval); cronometroInterval = null; }
+    function zerarCron() { clearInterval(cronometroInterval); cronometroInterval = null; tempo = 0; document.getElementById("cronometro").innerText = "00:00:00"; }
+
+    // 16
+    function mudarCor(cor) { document.body.style.background = cor; }
+
+    // 18
+    document.getElementById("btnCor").addEventListener("click", function() {
+      const cores = ["#e74c3c","#3498db","#2ecc71","#f1c40f","#9b59b6","#e67e22"];
+      this.style.backgroundColor = cores[Math.floor(Math.random()*cores.length)];
+    });
+
+    // 19
+    document.getElementById("btnContador").addEventListener("click", () => {
+      cliques++;
+      document.getElementById("contador").innerText = cliques;
+    });
+
+    // 20
+    const textoOriginal = document.getElementById("textoHover").innerText;
+    document.getElementById("textoHover").addEventListener("mouseover", () => {
+      document.getElementById("textoHover").innerText = "Olá! Você passou o mouse!";
+    });
+    document.getElementById("textoHover").addEventListener("mouseout", () => {
+      document.getElementById("textoHover").innerText = textoOriginal;
+    });
+
+    // 21
+    document.getElementById("inputTecla").addEventListener("keydown", (e) => {
+      document.getElementById("teclaPressionada").innerText = e.key;
+    });
+
+    // 22
+    document.getElementById("paragrafo").addEventListener("dblclick", function() {
+      this.style.display = "none";
+    });
+
+    // 23
+    document.getElementById("checkPermissao").addEventListener("change", function() {
+      document.getElementById("btnEnviar").disabled = !this.checked;
+    });
+  </script>
+</body>
+</html>
